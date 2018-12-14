@@ -9,6 +9,7 @@ fname_poschamp = 'PChamp.json'
 
 owned_champs = []       #posiadane postacie
 possible_chests = []     #postacie na ktorych mozna zdobyc skrzynie
+owned_chests = []        #lista postaci na których zdobyto skrzynie
 
 def firstlaunch(file_name):
     """Funkcja używana podczas pierwszego uruchomienia do stworzenia
@@ -38,12 +39,14 @@ def check_champs(file_name):
         answer2 = input('Czy mozesz zdobyć skrzynię na ' + champ + '?(T/N)')
         if answer2.lower() == 't':
             possible_chests.append(champ)
+        else:
+            owned_chests.append(champ)
 
     if possible_chests:
         with open(fname_poschamp, 'w') as fpchamp:
             json.dump(possible_chests, fpchamp)
         for chest in possible_chests:
-            print('\n\nMozesz zdobyć skrzynie na ' + chest)
+            print('\n\nMozesz zdobyć skrzynie na ' + chest.title())
     else:
         print('\nZosbyłeś skrzynie na wszystkich posiadanych postaciach')
 
