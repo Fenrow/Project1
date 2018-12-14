@@ -12,7 +12,7 @@ possible_chests = []     #postacie na ktorych mozna zdobyc skrzynie
 
 def firstlaunch(file_name):
     """Funkcja używana podczas pierwszego uruchomienia do stworzenia
-    listy posiadanych postaci"""
+    listy posiadanych postaci (file_name 'fname_template.txt')"""
 
     try:
         with open(file_name) as ftemplate:
@@ -30,7 +30,7 @@ def firstlaunch(file_name):
 
 
 def check_champs(file_name):
-    """Funkcja pokazująca dostępne postaci"""
+    """Funkcja pokazująca dostępne postaci (file_name 'OChamp.json')"""
     with open(file_name) as fconfig:
         owned_champs = json.load(fconfig)
 
