@@ -3,8 +3,6 @@ zdobyć skrzynię hextech"""
 
 import json
 
-import lib_01
-
 all_champions = [
 'aatrox','ahri','akali','alistar','amumu','anivia','annie','ashe','aurelion sol'
 ,'azir','bard','blitzcrank','brand','braum','caitlyn','camille','cassiopeia',
