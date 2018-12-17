@@ -39,7 +39,7 @@ def check_champs(file_name):
         answer2 = input('Czy mozesz zdobyć skrzynię na ' + champ + '?(T/N)')
         if answer2.lower() == 't':
             possible_chests.append(champ)
-        else:
+        elif answer2.lower() == 'n':
             owned_chests.append(champ)
 
     if possible_chests:
