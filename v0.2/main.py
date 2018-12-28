@@ -9,7 +9,7 @@ all_champions = [
 "cho'Gath",'corki','darius','diana','dr mundo','draven','ekko','elise','evelynn'
 ,'ezreal','fiddlesticks','fiora','fizz','galio','gangplank','garen','gnar',
 'gragas','graves','hecarim','heimerdinger','illaoi','irelia','ivern','janna',
-'jarvan IV','jax','jayce','jhin',"kai'Sa",'kalista','karma','karthus','kassadin'
+'jarvan IV','jax','jayce','jinx','jhin',"kai'Sa",'kalista','karma','karthus','kassadin'
 ,'katarina','kayle','kayn','kennen',"kha'Zix",'kindred','kled',"kog'Maw",
 'leBlanc','lee sin','leona','lissandra','lucian','lulu','lux','malphite',
 'malzahar','maokai','master yi','miss fortune','mordekaiser','morgana','nami',
@@ -37,16 +37,13 @@ def new_user():
         answer1 = input('Czy posiadasz bohatera ' + champion.title() + '?(T/N)')
         if answer1.lower() == 't':
             owned_champions.append(champion)
-            print(owned_champions)
 
     for champion in owned_champions:
         answer2 = input('Czy możesz zdobyć skrzynię na ' + champion.title() + '?(T/N)')
         if answer2.lower() == 't':
             possible_chests.append(champion)
-            print(possible_chests)
         else:
             owned_chest.append(champion)
-            print(owned_chest)
 
 def save_data():
     """funkcja zapisująca dane do plików"""
