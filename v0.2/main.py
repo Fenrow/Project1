@@ -3,6 +3,8 @@ zdobyć skrzynię hextech"""
 
 import json
 
+import function as f
+
 all_champions = [
 'aatrox','ahri','akali','alistar','amumu','anivia','annie','ashe','aurelion sol'
 ,'azir','bard','blitzcrank','brand','braum','caitlyn','camille','cassiopeia',
@@ -29,32 +31,6 @@ owned_chest = []
 fname_owned_champ = 'owned_champ.json' #posiadane postacie
 fname_possible_champ = 'poss_champ.json' #postacie na ktorych mozna zdobyc skrzynie
 fname_owned_chest = 'owned_chest.json' #postacie na ktorych posiada sie skrzynie
-
-def new_user():
-    """funkcja inicjalizujaca nowego urzytkownika/nowy profil"""
-
-    for champion in all_champions:
-        answer1 = input('Czy posiadasz bohatera ' + champion.title() + '?(T/N)')
-        if answer1.lower() == 't':
-            owned_champions.append(champion)
-
-    for champion in owned_champions:
-        answer2 = input('Czy możesz zdobyć skrzynię na ' + champion.title() + '?(T/N)')
-        if answer2.lower() == 't':
-            possible_chests.append(champion)
-        else:
-            owned_chest.append(champion)
-
-def save_data():
-    """funkcja zapisująca dane do plików"""
-
-    with open(fname_owned_champ, 'w') as f_ownch1:
-        json.dump(owned_champions, f_ownch1)
-    with open(fname_possible_champ, 'w') as f_posch1:
-        json.dump(possible_chests, f_posch1)
-    with open(fname_owned_chest, 'w') as f_ownche1:
-        json.dump(owned_chest, f_ownche1)
-
 
 try:
     with open(fname_owned_champ) as f_ownch:
@@ -94,6 +70,6 @@ if load_data_OK == True:
     for possible in possible_chests:
         print(possible.title())
 else:
-    new_user()
+    f.new_user(all_champions, owned_champions, possible_chests, owned_chest)
 
-save_data()
+f.save_data(all_champions, owned_champions, possible_chests, owned_chest, fname_owned_champ, fname_owned_chest, fname_possible_champ)
