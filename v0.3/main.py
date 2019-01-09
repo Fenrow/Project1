@@ -36,7 +36,6 @@ owned_chest = []
 
 filename = 'Champion.csv'
 exit = False
-fnfe = False #File not found error
 
 def data_preparation():
     """Funkcja odpowiedzialna za przygotowanie danych z pliku csv"""
