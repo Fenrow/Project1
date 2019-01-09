@@ -8,6 +8,7 @@ na tej postaci skrzynie
 """
 
 import csv
+import os
 
 all_champions = [
 'aatrox','ahri','akali','alistar','amumu','anivia','annie','ashe','aurelion sol'
@@ -56,8 +57,8 @@ def data_preparation():
                         owned_chest.append(row[0])
 
     except FileNotFoundError:
-        with open(filename, 'a') as f:
-            header = ['Champion name,Owned,Possible chest']
+        with open(filename, 'a', newline='') as f:
+            header = ['Champion name','Owned','Possible chest']
             writer = csv.writer(f)
             writer.writerow(header)
 
@@ -74,13 +75,14 @@ def menu():
     '5. Wyjście',
     ]
 
+    os.system('CLS')
     print('\nMENU:')
     for possible_option in possible_options:
         print(possible_option)
 
     while good_choice == False:
         try:
-            user_choice = int(input('Wpisz numer opcji: '))
+            user_choice = int(input('\nWpisz numer opcji: '))
         except ValueError:
             print('To nie jest liczba')
             continue
@@ -91,14 +93,19 @@ def menu():
                 print('Nie istnieje opcja o tym numerze')
 
     if user_choice == 1:
+        os.system('CLS')
         show_possible_chest()
     elif user_choice == 2:
+        os.system('CLS')
         get_chest()
     elif user_choice == 3:
+        os.system('CLS')
         new_champion()
     elif user_choice == 4:
+        os.system('CLS')
         first_configuration()
     elif user_choice == 5:
+        os.system('CLS')
         global exit
         exit = True
         return exit
@@ -131,24 +138,23 @@ def first_configuration():
         else:
             owned_chest.append(champion)
 
-    lines_to_csv = []
+
 
     for champion in all_champions:
-        message = champion.lower() + ','
+        lines_to_csv = []
+        lines_to_csv.append(champion.lower())
         if champion in owned_champions:
-            message += '1,'
+            lines_to_csv.append('1')
         else:
-            message += '0,'
+            lines_to_csv.append('0')
         if champion in possible_chests:
-            message += '1'
+            lines_to_csv.append('1')
         else:
-            message += '0'
+            lines_to_csv.append('0')
 
-        lines_to_csv.append(message)
-
-    with open(filename, 'a') as f:
-        writer = csv.writer(f)
-        writer.writerow(lines_to_csv)
+        with open(filename, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(lines_to_csv)
 
 data_preparation()
 while True:
