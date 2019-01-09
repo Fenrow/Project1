@@ -108,23 +108,89 @@ def menu():
         os.system('CLS')
         global exit
         exit = True
-        return exit
 
 def show_possible_chest():
     """Funkcja pokazująca użytkownikowi możliwe do zdobycia skrzynie"""
-    pass
+
+    global possible_chests
+
+    possible_chests.sort()
+
+    if possible_chests:
+        for possible_chest in possible_chests:
+
+            print(possible_chest)
+    else:
+        print("Zdobyłeś już wszystkie skrzynie")
+
+    answer1 = input('\nCzy chcesz wyjść? (T/N): ')
+    if answer1.lower() == 't':
+        global exit
+        exit = True
+    else:
+        menu()
 
 def get_chest():
     """Funkcja dodająca nowo zdobytą skrzynie"""
-    pass
+
+    new_chest = input('Wpisz nazwę postaci na której zdobyłeś skrzynię: ')
+
+    global owned_champions, possible_chests, all_champions, owned_chest
+
+    with open(filename) as f:
+        reader = csv.reader(f)
+        header_row = next(reader)
+
+        for row in reader:
+            if row[0] == new_chest.lower():
+                if row[1] == '1':
+                    possible_chests.remove(new_chest.lower())
+                    owned_chest.append(new_chest.lower())
+                else:
+                    print('Nie posiadasz tej postaci')
+            else:
+                continue
+
+    save_to_file()
 
 def new_champion():
-    """Funkcja dodająca postać do listy posiadanych postaci"""
-    pass
+    """Funkcja dodająca postać do listy posiadanych postaci, tym samym dodająca
+    ją do postaci na których można zdobyć skrzynię"""
+
+    global owned_champions, possible_chests, all_champions
+
+    get_name = False
+    bad_data = False
+
+
+    while get_name == False:
+        if bad_data == True:
+            print('\nNieprawidłowe dane!\n')
+        new_champ = input('Wpisz nazwę postaci którą chcesz dodać do listy posiadanych: ')
+
+
+        with open(filename) as f:
+            reader = csv.reader(f)
+            header_row = next(reader)
+
+            for row in reader:
+                if row[0] == new_champ.lower():
+                    if row[1] != '1':
+                        owned_champions.append(new_champ.lower())
+                        possible_chests.append(new_champ.lower())
+                        get_name = True
+                        bad_data = False
+                    else:
+                        bad_data = True
+                else:
+                    bad_data = True
+
+    save_to_file()
 
 def first_configuration():
-    """Funkcja wywoływana podczas pierwszej konfiguracji danego urzytkownika
-    oraz zapisanie danych do pliku csv"""
+    """Funkcja wywoływana podczas pierwszej konfiguracji danego urzytkownika"""
+
+    global all_champions, owned_champions, possible_chests, owned_chest
 
     for champion in all_champions:
         answer1 = input('Czy posiadasz bohatera ' + champion.title() + ' (T/N)?: ')
@@ -138,7 +204,17 @@ def first_configuration():
         else:
             owned_chest.append(champion)
 
+    save_to_file()
 
+def save_to_file():
+    """Funkcja odpowiadająca za zapis danych do pliku csv"""
+
+    global all_champions, owned_champions, possible_chests, owned_chest
+
+    with open(filename, 'w', newline='') as f:
+        header = ['Champion name','Owned','Possible chest']
+        writer = csv.writer(f)
+        writer.writerow(header)
 
     for champion in all_champions:
         lines_to_csv = []
@@ -159,9 +235,6 @@ def first_configuration():
 data_preparation()
 while True:
     if exit == False:
-        print('Posiadane', owned_champions)
-        print('Możliwe', possible_chests)
-        print('Zdobyte', owned_chest)
         menu()
     else:
         break
