@@ -1,18 +1,18 @@
 Champion name,Owned,Possible chest
 aatrox,1,1
-ahri,1,0
+ahri,1,1
 akali,1,1
 alistar,1,1
 amumu,1,1
 anivia,1,0
 annie,1,1
-ashe,1,0
+ashe,1,1
 aurelion sol,1,0
 azir,1,1
 bard,1,1
 blitzcrank,1,1
 brand,1,1
-braum,1,0
+braum,1,1
 caitlyn,1,1
 camille,1,1
 cassiopeia,1,1
@@ -21,19 +21,19 @@ corki,1,1
 darius,1,1
 diana,1,1
 dr mundo,1,0
-draven,1,0
+draven,1,1
 ekko,1,0
 elise,1,1
 evelynn,1,1
-ezreal,1,0
+ezreal,1,1
 fiddlesticks,1,1
 fiora,1,1
 fizz,1,0
-galio,1,0
+galio,1,1
 gangplank,1,0
 garen,1,1
 gnar,1,1
-gragas,1,0
+gragas,1,1
 graves,1,1
 hecarim,1,1
 heimerdinger,1,1
@@ -45,7 +45,7 @@ jarvan iv,0,0
 jax,1,1
 jayce,1,1
 jhin,1,0
-jinx,1,0
+jinx,1,1
 kai'sa,0,0
 kalista,1,1
 karma,1,1
@@ -54,7 +54,7 @@ kassadin,1,1
 katarina,1,1
 kayle,1,1
 kayn,1,0
-kennen,1,0
+kennen,1,1
 kha'zix,0,0
 kindred,1,1
 kled,1,1
@@ -68,20 +68,20 @@ lulu,1,1
 lux,1,1
 malphite,1,0
 malzahar,1,1
-maokai,1,0
+maokai,1,1
 master yi,1,0
-miss fortune,1,0
+miss fortune,1,1
 mordekaiser,1,1
 morgana,1,1
 nami,1,0
-nasus,1,0
+nasus,1,1
 nautilus,1,0
 neeko,1,1
 nidalee,1,1
 nocturne,1,1
-nunu i willump,1,0
+nunu i willump,1,1
 olaf,1,0
-orianna,1,0
+orianna,1,1
 ornn,1,1
 pantheon,1,1
 poppy,1,1
@@ -91,40 +91,40 @@ rakan,1,1
 rammus,1,1
 rek'sai,0,0
 renekton,1,1
-rengar,1,0
+rengar,1,1
 riven,1,1
 rumble,1,0
-ryze,1,0
+ryze,1,1
 sejuani,1,1
 shaco,1,0
 shen,1,1
-shyvana,1,0
+shyvana,1,1
 singed,1,0
 sion,1,1
-sivir,1,0
+sivir,1,1
 skarner,1,1
 sona,1,1
 soraka,1,0
 swain,1,1
-syndra,1,0
+syndra,1,1
 tahm kench,1,1
 taliyah,1,1
 talon,1,1
 taric,1,1
 teemo,1,1
 thresh,1,0
-tristana,1,0
+tristana,1,1
 trundle,1,1
 tryndamere,1,1
 twisted fate,1,1
 twitch,1,1
 udyr,1,1
 urgot,1,0
-varus,1,0
+varus,1,1
 vayne,1,1
 veigar,1,0
 vel'koz,0,0
-vi,1,0
+vi,1,1
 viktor,1,1
 vladimir,1,1
 volibear,1,1
@@ -134,10 +134,10 @@ xayah,1,1
 xerath,1,1
 xin zhao,1,1
 yasuo,1,1
-yoric,1,0
+yoric,1,1
 zac,1,1
 zed,1,1
 ziggs,1,0
 zilean,1,1
-zoe,1,0
+zoe,1,1
 zyra,1,0

@@ -71,7 +71,7 @@ def menu():
     '1. Wyświetl możliwe do zdobycia skrzynie',
     '2. Zdobyłem skrzynie',
     '3. Kupiłem nową postać ',
-    '4. Pierwsza konfiguracja',
+    '4. Opcje',
     '5. Wyjście',
     ]
 
@@ -87,7 +87,7 @@ def menu():
             print('To nie jest liczba')
             continue
         else:
-            if user_choice >= 1 and user_choice <= len(possible_options):
+            if int(user_choice) >= 1 and int(user_choice) <= len(possible_options):
                 good_choice = True
             else:
                 print('Nie istnieje opcja o tym numerze')
@@ -108,6 +108,17 @@ def menu():
         os.system('CLS')
         global exit
         exit = True
+
+def new_sesson():
+    """Funkcja resetująca zdobyte skrzynie na posiadanych postaciach"""
+
+    global owned_champions, possible_chests, owned_chest
+
+    for c in owned_chest:
+        possible_chests.append(c)
+        owned_chest.remove(c)
+
+    save_to_file()
 
 def show_possible_chest():
     """Funkcja pokazująca użytkownikowi możliwe do zdobycia skrzynie"""
@@ -192,19 +203,49 @@ def first_configuration():
 
     global all_champions, owned_champions, possible_chests, owned_chest
 
-    for champion in all_champions:
-        answer1 = input('Czy posiadasz bohatera ' + champion.title() + ' (T/N)?: ')
-        if answer1.lower() == 't':
-            owned_champions.append(champion)
+    possible_options = [
+    '1. Pierwsze uruchomienie',
+    '2. Nowy sezon',
+    '3. Powrót',
+    ]
+    good_choice = False
 
-    for champion in owned_champions:
-        answer2 = input('Czy możesz zdobyć skrzynię na ' + champion.title() + ' (T/N)?: ')
-        if answer2.lower() == 't':
-            possible_chests.append(champion)
+    print('\nMENU:')
+    for possible_option in possible_options:
+        print(possible_option)
+
+    while good_choice == False:
+        try:
+            user_choice = int(input('\nWpisz numer opcji: '))
+        except ValueError:
+            print('To nie jest liczba')
+            continue
         else:
-            owned_chest.append(champion)
+            if int(user_choice) >= 1 and int(user_choice) <= len(possible_options):
+                good_choice = True
+            else:
+                print('Nie istnieje opcja o tym numerze')
 
-    save_to_file()
+    if user_choice == 1:
+        for champion in all_champions:
+            answer1 = input('Czy posiadasz bohatera ' + champion.title() + ' (T/N)?: ')
+            if answer1.lower() == 't':
+                owned_champions.append(champion)
+
+        for champion in owned_champions:
+            answer2 = input('Czy możesz zdobyć skrzynię na ' + champion.title() + ' (T/N)?: ')
+            if answer2.lower() == 't':
+                possible_chests.append(champion)
+            else:
+                owned_chest.append(champion)
+
+        save_to_file()
+
+    elif user_choice == 2:
+        new_sesson()
+
+    elif user_choice == 3:
+        menu()
 
 def save_to_file():
     """Funkcja odpowiadająca za zapis danych do pliku csv"""
@@ -233,6 +274,7 @@ def save_to_file():
             writer.writerow(lines_to_csv)
 
 data_preparation()
+
 while True:
     if exit == False:
         menu()
