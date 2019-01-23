@@ -70,8 +70,9 @@ def menu():
     '1. Wyświetl możliwe do zdobycia skrzynie',
     '2. Zdobyłem skrzynie',
     '3. Kupiłem nową postać ',
-    '4. Opcje',
-    '5. Wyjście',
+    '4. Dodano nową postać',
+    '5. Opcje',
+    '6. Wyjście',
     ]
 
     os.system('CLS')
@@ -99,11 +100,14 @@ def menu():
         get_chest()
     elif user_choice == 3:
         os.system('CLS')
-        new_champion()
+        get_new_champion()
     elif user_choice == 4:
         os.system('CLS')
-        first_configuration()
+        new_champion()
     elif user_choice == 5:
+        os.system('CLS')
+        first_configuration()
+    elif user_choice == 6:
         os.system('CLS')
         global exit
         exit = True
@@ -163,7 +167,7 @@ def get_chest():
 
     save_to_file()
 
-def new_champion():
+def get_new_champion():
     """Funkcja dodająca postać do listy posiadanych postaci, tym samym dodająca
     ją do postaci na których można zdobyć skrzynię"""
 
@@ -196,6 +200,25 @@ def new_champion():
                     bad_data = True
 
     save_to_file()
+
+def new_champion():
+    """Funkcja dodająca nową postać do list 'all_champions'"""
+    get_name = False
+    bad_data = False
+
+    while get_name == False:
+
+        if bad_data == True:
+            print('\nNieprawidłowe dane!\n')
+        new_champ = input('Wpisz nazwę postaci którą chcesz dodać do listy wszystkich postaci: ')
+        new_champ_apr = input('Wpisz nazwę jeszcze raz: ')
+
+        if new_champ.lower() == new_champ_apr.lower():
+            all_champions.append(new_champ_apr)
+            save_to_file()
+            get_name = True
+        else:
+            bad_data = True
 
 def first_configuration():
     """Funkcja wywoływana podczas pierwszej konfiguracji danego urzytkownika"""
