@@ -23,7 +23,7 @@ all_champions = [
 'morgana','nami','nasus','nautilus','neeko','nidalee','nocturne','nunu i willump',
 'olaf','orianna','ornn','pantheon','poppy','pyke','quinn','rakan','rammus',
 "rek'Sai",'renekton','rengar','riven','rumble','ryze','sejuani','shaco','shen',
-'shyvana','singed','sion','sivir','skarner','sona','soraka','swain','syndra',
+'shyvana','singed','sion','sivir','skarner','sona','soraka','swain','sylas','syndra',
 'tahm kench','taliyah','talon','taric','teemo','thresh','tristana','trundle',
 'tryndamere','twisted fate','twitch','udyr','urgot','varus','vayne','veigar',
 "vel'Koz",'vi','viktor','vladimir','volibear','warwick','wukong','xayah',
@@ -70,9 +70,8 @@ def menu():
     '1. Wyświetl możliwe do zdobycia skrzynie',
     '2. Zdobyłem skrzynie',
     '3. Kupiłem nową postać ',
-    '4. Dodano nową postać',
-    '5. Opcje',
-    '6. Wyjście',
+    '4. Opcje',
+    '5. Wyjście',
     ]
 
     os.system('CLS')
@@ -103,11 +102,8 @@ def menu():
         get_new_champion()
     elif user_choice == 4:
         os.system('CLS')
-        new_champion()
-    elif user_choice == 5:
-        os.system('CLS')
         first_configuration()
-    elif user_choice == 6:
+    elif user_choice == 5:
         os.system('CLS')
         global exit
         exit = True
@@ -228,7 +224,8 @@ def first_configuration():
     possible_options = [
     '1. Pierwsze uruchomienie',
     '2. Nowy sezon',
-    '3. Powrót',
+    '3. Dodano nową postać',
+    '4. Powrót',
     ]
     good_choice = False
 
@@ -267,6 +264,9 @@ def first_configuration():
         new_sesson()
 
     elif user_choice == 3:
+        new_champion()
+
+    elif user_choice == 4:
         menu()
 
 def save_to_file():
